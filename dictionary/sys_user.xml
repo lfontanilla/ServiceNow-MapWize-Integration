@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element attributes="ref_ac_columns_search=true,all_tables.text_index_translations=true,ref_ac_order_by=name,ref_ac_columns=email,display_image=photo,ref_auto_completer=AJAXTableCompleter,iterativeDelete=true" create_roles="user_admin" defaultsort="-1" dynamic_creation_script="dynamicUserCreation(current, value);" label="User" max_length="40" name="sys_user" text_index="true" type="collection">
+        <element attributes="ref_contributions=x_74411_mapwize_in_MapWizeApp;x_74411_mapwize_in_MapWizeRouteApp" label="Indoor Location" max_length="32" name="x_74411_mapwize_in_indoor_location" reference="x_74411_mapwize_in_indoor_location" type="reference"/>
+    </element>
+</database>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="novosacale_places" max_length="40" name="x_74411_mapwize_in_novosacale_places" type="collection">
+        <element attributes="import_attribute_name=ID,edge_encryption_enabled=true" label="ID" max_length="40" name="u_id" type="string"/>
+        <element attributes="import_attribute_name=Nombre,edge_encryption_enabled=true" label="Nombre" max_length="40" name="u_nombre" type="string"/>
+    </element>
+</database>

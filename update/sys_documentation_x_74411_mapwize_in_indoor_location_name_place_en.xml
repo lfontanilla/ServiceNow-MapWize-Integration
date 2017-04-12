@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="name_place" label="Name Place" language="en" table="x_74411_mapwize_in_indoor_location">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>name_place</element>
+            <help/>
+            <hint/>
+            <label>Name Place</label>
+            <language>en</language>
+            <name>x_74411_mapwize_in_indoor_location</name>
+            <plural>Name Places</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-04-12 21:30:28</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>4ceccddedb823200a3c056f0cf96192d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Name Place</sys_name>
+            <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+            <sys_update_name>sys_documentation_x_74411_mapwize_in_indoor_location_name_place_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-04-12 21:30:28</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="Indoor Location" section_id="fea21192dbc23200a3c056f0cf961923" sys_domain="global" table="sys_user" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>x_74411_mapwize_in_indoor_location</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-04-12 21:57:03</sys_created_on>
+            <sys_id>51f211d2dbc23200a3c056f0cf9619be</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Indoor Location" display_value="Indoor Location" name="sys_user" sys_domain="global" view="Default view">fea21192dbc23200a3c056f0cf961923</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-04-12 21:57:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Indoor Location</caption>
+            <header>false</header>
+            <name>sys_user</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-04-12 21:55:47</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fea21192dbc23200a3c056f0cf961923</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Indoor Location</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+            <sys_update_name>sys_ui_section_fea21192dbc23200a3c056f0cf961923</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-04-12 21:55:47</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

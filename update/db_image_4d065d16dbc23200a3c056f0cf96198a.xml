@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <format>png</format>
+        <height>30</height>
+        <image/>
+        <name>LogoIndoorMap.png</name>
+        <size_bytes>1320</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 22:12:06</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>4d065d16dbc23200a3c056f0cf96198a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>LogoIndoorMap.png</sys_name>
+        <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+        <sys_update_name>db_image_4d065d16dbc23200a3c056f0cf96198a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-12 22:33:48</sys_updated_on>
+        <thumbnail/>
+        <width>30</width>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#aa2184</average_image_color>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>image</file_name>
+        <image_height>30</image_height>
+        <image_width>30</image_width>
+        <size_bytes>1320</size_bytes>
+        <size_compressed>1343</size_compressed>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 22:12:29</sys_created_on>
+        <sys_id>97769d16dbc23200a3c056f0cf9619d3</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-12 22:12:29</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>4d065d16dbc23200a3c056f0cf96198a</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="97769d16dbc23200a3c056f0cf9619d3">97769d16dbc23200a3c056f0cf9619d3</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 22:12:29</sys_created_on>
+        <sys_id>9f769d16dbc23200a3c056f0cf9619d3</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>ASgF1/qJUE5HDQoaCgAAAA1JSERSAAAAHgAAAB4IAgAAALRSOfUAAATvSURBVHictFZdbBTVF7/3zt3Zmc5uP6D/Enb/+2f5+JeFGhAo2NKIkApi4oMmPpiQQFTUB2NCgg/GN00wwScSEz/eTEyIPmhUEoIRKjEiLaHQbqllgVJoYbu7nd22szvfc+/1zi6Vlm4rgXAeNjtzz/nd3zn3d+4ZzBgDT8bQE8J9PGgGGGWLJP2I0BwUQAAR5Ob/f0xoxu5x5L8c1Cpat3tulXJF/r8q9+pv/9X+Ojl44sMTOIgd3dl5aFf7wXbOne9RhUtVo7NM141cNpfN5EzT1DLakZYjPV93O4aTOp36eM1Hd/ru+P6Ezg7Hi6TP6/jPY7Ivef3aDerRzR2bQhkl1KBsO/AMf9/c2Rxvi1/ruhbdGPVDwP2QarXmR08ox81PTnb/2VPIF5J9A5nxbDAYlGqk0ZGxEXWEyLTr5NmiUXKLbi6Va2pumg8zr9b8uMslUzO5rp9/tTEIKpJr2oIgAFjmxN0xmB4raqoWWRvRThawI7z5w0EowNlZAt9rFtlyGpAajvntxcHUgBH2MA6QeoabFAELEhX4um4YvCwN0TpieZnhLJO9N44eQBj5GgflgsAFWJunh4rfdNMbqh6Vu7cEiE2oCMN3SOvz7Ste3uJnk1MHkoOZTIZ54G4yvWdP58a9G2i5gA8opAxdBqcFffLoKbtnBAaxDHBqrZCKQUpBaNSJ/TjFA+tfaYm+v0uJN3DnM790TaiqoZnbd7UlEmsrWLqqc/pyvewDwsoxMr+1SGbaPn8ThyUnjPs24PHlgkABJOw/3TqvI5Xg+PFLp3Z/2f/pb8Rw2zrbeZxSXzN05WpP9wXTsHqP937x4ueTo4WKuubWGiOoiNBjVh1K/1cQXd7NMKCR4DShGEIKxCU1xCH9n5wZ+2mw5fCOUDik67rrukPJq5ePXcr8kUaSIIi4mvhYWR68XAgxx2Mu4WQB9U+nohlfkQIMNirazfy5d79X+9Ou6U6lteKEXrhdkGplLM65oue2DJcHYMF0Kf5URF0hES6FkO02GoFUkS0N8tsI8GVGAxi7kYANHGPUsQ3CskTwEAX0AUXMaRmmWQyjpa+1dbzz6upN6wmlwlLFOtSy7PWt2AW05HBpQ4tRBMytMhQQFBG56Zq/l6hJwaK6ZnJnIvzWs/h/S/hT1Ft2havJofmAJe2LxffG1c8ukIFxEgnabTVeJIAcn6V310Uy4sLwLM8u2fPEV0H2KMT3BOPcmro4fGVk7LbIBK5YgoDYIAdBoHh9Qvds6hFI/N7wAsC6YVvndMuwQk2hjrc7tu7fxq/DCv37rH3c8jHaac0rGPWXSnR60lldLwoBlxBPsz1oB+K1YcMpZTVvyiaIQhcXezUuqtZ9rTvee64uUled9YzAoZHK6Vdzw/u/sxMhNQaefqG91CyPTKQdx+XOkiw1r///ErEuebZ36Njl2kSs84PO2OYYj+Y9iQS0gEIquyFEpkzHc2pU2nQhL21nq1etMzHllyrPadWalesSCe62e9VLm1q3NG5YDmbm2Wzc6qzN4TyZNtNfnc+fGqrdvjJ2eCdWRLSyTi+W+KoSUvjtCspirwiiynypAg0qc5rq/eM80lVLgUaF946yMYpEYX7wQqALQM+Yky1S00UiFiO1Myn5ng+IdxF7xLH7MLbwxwIrl/4x9l1w7JaHxcPmXtWe4Dff3wEAAP//40XbmlLdbrkAAAAASUVORK5CYILG7lRgKAUAAA==</data>
+        <length>1780</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="97769d16dbc23200a3c056f0cf9619d3">97769d16dbc23200a3c056f0cf9619d3</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 22:12:29</sys_created_on>
+        <sys_id>13769d16dbc23200a3c056f0cf9619d4</sys_id>
+    </sys_attachment_doc>
+</record_update>
