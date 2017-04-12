@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_74411_mapwize_in.MapWizeAjaxHelper</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>MapWizeAjaxHelper</name>
+        <script><![CDATA[var MapWizeAjaxHelper = Class.create();
+MapWizeAjaxHelper.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getMapwizeIntegrationParams:function(){		
+		var result = {};
+		result.apikey = gs.getProperty('x_74411_mapwize_in.routing.mapwize.apikey', 'd8718666af305f55890aea3cd17a3823');
+		result.accesskey = gs.getProperty('x_74411_mapwize_in.routing.mapwize.accesskey', 'hQv4I7nwIEHHFvJy');
+		result.topleftlat = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.topleft.lat', '11.002682');
+		result.topleftlong = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.topleft.long', '-74.805625');
+		result.bottomrightlat = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.bottomright.lat', '11.002277');
+		result.bottomrightlong = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.bottomright.long', '-74.804306');
+		result.defaultcenterplace = gs.getProperty('x_74411_mapwize_in.routing.mapwize.defaultcenterplace', '58e7b607899e32001003e504');
+			
+		var res = new global.JSON().encode(result); // convert object to JSON string
+		return res;
+		
+	},
+    type: 'MapWizeAjaxHelper'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 16:24:36</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>b295001edb023200a3c056f0cf961984</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>MapWizeAjaxHelper</sys_name>
+        <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+        <sys_update_name>sys_script_include_b295001edb023200a3c056f0cf961984</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-12 21:13:06</sys_updated_on>
+    </sys_script_include>
+</record_update>

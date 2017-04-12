@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var iIndicadorTo = true;
+
+var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+	
+	var apikey = '32feb619c24538c32e542bc9c4251aaf';
+	var accesskey = '6qRlrrPZCdExksNw';
+	var topleftlat = '11.002682';
+	var topleftlong = '-74.805625';
+	var bottomrightlat = '11.002277';
+	var bottomrightlong = '-74.804306';
+	var centerplace =  '58e7b607899e32001003e504';
+	
+	/*
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;
+	var centerplace =  result.defaultcenterplace; 
+	*/
+	//Define the bounds of the map
+	var bounds = new L.LatLngBounds(
+	new L.LatLng(topleftlat, topleftlong),
+	new L.LatLng(bottomrightlat, bottomrightlong)
+	);
+	//Create the map
+	//use maxBounds to limit the visible area
+	var map = Mapwize.map('map', {
+		apiKey: apikey,      // PASTE YOU API KEY HERE !!! This is a demo key. It is not allowed to use it for production. The key might change at any time without notice.
+		accessKey: accesskey                                // Key to gain access to the demo building
+	}, function (){
+		//Fits the bounds of the map so the entire region is visible.
+		map.fitBounds(bounds);
+		// Center Place
+		map.centerOnPlace(centerplace);
+	});
+	
+	
+	
+	map.on('placeClick', function(e){
+		// SDSE - VSI Team
+		// Se Limpian los marcadores
+		map.removeMarkers();
+		if(!iIndicadorTo)
+			{
+			// SDSE - VSI Team
+			// Se valida si existe un marcador destino	y se vuelve a agregar el marcador.
+			if(document.getElementById('hdFrom').value != '') map.addMarker({placeId:document.getElementById('hdFrom').value});
+				
+				document.getElementById('txtTO').value = e.place.name;
+				document.getElementById('hdTO').value = e.place._id;
+				iIndicadorTo = true;
+			}
+			else
+				{
+				// SDSE - VSI Team
+				// Se valida si existe un marcador origen	y se vuelve a agregar el marcador.
+				if(document.getElementById('hdTO').value != '') map.addMarker({placeId:document.getElementById('hdTO').value});
+					
+					document.getElementById('txtFrom').value = e.place.name;
+					document.getElementById('hdFrom').value = e.place._id;
+					iIndicadorTo = false;
+				}
+				// SDSE - VSI Team
+				// Se asigna el Marcador en el mapa
+				map.addMarker({placeId:e.place._id});
+				});
+				
+				
+				
+				removeMarkers = function () {
+					map.removeMarkers();
+					map.stopDirections();
+					document.getElementById('txtFrom').value = '';
+					document.getElementById('hdFrom').value = '';
+					
+					document.getElementById('txtTO').value = '';
+					document.getElementById('hdTO').value = '';
+				};
+				
+				createDirection = function() {
+					if((document.getElementById('hdFrom').value != '') && (document.getElementById('hdTO').value != ''))
+						map.showDirections({placeId:document.getElementById('hdFrom').value},{placeId:document.getElementById('hdTO').value}, null, function (){});
+					};
+					
+					saveValues= function()
+					{
+						var PlaceNameFrom = gel("txtFrom").value;
+						var PlaceNameTo = gel("txtTO").value;
+						
+						var PlaceIdFrom = document.getElementById('hdFrom').value;
+						var PlaceIdTo =  document.getElementById('hdTO').value;
+						
+						if ((PlaceNameFrom == "")||(PlaceNameTo == "")) {
+							//If comments are empty stop submission
+							alert("Please provide From/To Direction to submit the dialog.");
+						}else{
+							g_form.setValue("u_nameplacefrom", PlaceNameFrom);
+							g_form.setValue("u_nameplaceto", PlaceNameTo);
+							
+							g_form.setValue("u_idplacefrom", PlaceIdFrom);
+							g_form.setValue("u_idplaceto", PlaceIdTo);
+							GlideDialogWindow.get().destroy();
+						}
+					};
+					
+					
+					
+				}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_74411_mapwize_in_MapWize.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
+	<script src ="MapWize.jsdbx" type="text/javascript"></script>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:absolute; top:10px; bottom:50px; width:550px;
+            height: 250px;
+        }
+		
+		#form {
+            position:absolute; top:270px; bottom:500px; width:100px;
+            height: 150px;
+        }
+    </style>
+	
+	<div id="map"></div>
+	<g:ui_form>
+	<div id="form">
+		<table>
+			<tr>
+				<td colspan="3">DIRECTION</td>
+			</tr>
+			<tr>				
+				<td>
+					<g:ui_input_field label="From: " name="txtFrom"  id="txtFrom" size="50"/>					
+					<input type="hidden" id="hdFrom"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<g:ui_input_field label="To: " name="txtTO" id="txtTO" size="50"/>					
+					<input type="hidden" id="hdTO"></input>
+				</td>				
+			</tr>
+			<tr>
+				<td colspan="3" align="center">
+					<g:dialog_button onclick="createDirection()" type="button">Route</g:dialog_button>					
+					<g:dialog_button onclick="removeMarkers()" type="button">Clear</g:dialog_button>
+					<g:dialog_button onclick="saveValues()"   type="button">Save</g:dialog_button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</g:ui_form>
+</j:jelly>]]></html>
+        <name>MapWize</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-12 16:29:11</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5b078812db423200a3c056f0cf961952</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>MapWize</sys_name>
+        <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+        <sys_update_name>sys_ui_page_5b078812db423200a3c056f0cf961952</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-12 20:50:48</sys_updated_on>
+    </sys_ui_page>
+</record_update>
