@@ -12,7 +12,7 @@
         <sys_created_on>2017-04-12 22:17:17</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>aa57d156dbc23200a3c056f0cf961989</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>MapWizeRouteApp</sys_name>
         <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
         <sys_policy/>
@@ -20,19 +20,19 @@
         <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
         <sys_update_name>sys_ui_macro_aa57d156dbc23200a3c056f0cf961989</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-12 22:49:06</sys_updated_on>
+        <sys_updated_on>2017-04-13 20:03:03</sys_updated_on>
         <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	
 	
-	<a id="linkMapWize" title="${gs.getMessage('Show a MapWize route')}" onclick="showPopUpMapWizeRoute()">
+	<a id="linkMapWize" title="${gs.getMessage('Show a MapWize route')}" onclick="showPopUpMapWizeRouteApp()">
 		<img border="0" src="indooricon.png" height="30" width="30"/>   
 	</a>
 
 	<script type="text/javascript" language="JavaScript">
-		function showPopUpMapWizeRoute() {
+		function showPopUpMapWizeRouteApp() {
 		   
-		   var dialog = new GlideDialogWindow("x_74411_mapwize_in_UserSetRoute"); //Render the dialog containing the UI Page 'task_comments_dialog'
+		   var dialog = new GlideDialogWindow("x_74411_mapwize_in_UserSetRoute"); 
 		   dialog.setTitle("Show Route"); //Set the dialog title	
 		   dialog.setSize(800,500);
 		   dialog.render(); //Open the dialog

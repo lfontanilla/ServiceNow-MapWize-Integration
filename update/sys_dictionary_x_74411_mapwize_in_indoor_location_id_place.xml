@@ -52,8 +52,8 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-12 21:32:07</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
-        <sys_id>1b1d8ddedb823200a3c056f0cf9619ba</sys_id>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>1d6d0d26db423200a3c056f0cf961925</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Id Place</sys_name>
         <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
@@ -61,8 +61,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
         <sys_update_name>sys_dictionary_x_74411_mapwize_in_indoor_location_id_place</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-12 21:32:07</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-04-13 16:11:16</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

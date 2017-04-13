@@ -12,7 +12,7 @@ function MapwizeParse(response) {
 	var answer = response.responseXML.documentElement.getAttribute("answer");
 	var result = JSON.parse(answer);
 	
-	
+	/*
 	var apikey = '32feb619c24538c32e542bc9c4251aaf';
 	var accesskey = '6qRlrrPZCdExksNw';
 	var topleftlat = '11.002682';
@@ -20,8 +20,8 @@ function MapwizeParse(response) {
 	var bottomrightlat = '11.002277';
 	var bottomrightlong = '-74.804306';
 	var centerplace =  '58e7b607899e32001003e504';
+	*/
 	
-	/*
 	var apikey = result.apikey;
 	var accesskey = result.accesskey;
 	var topleftlat = result.topleftlat;
@@ -29,7 +29,7 @@ function MapwizeParse(response) {
 	var bottomrightlat = result.bottomrightlat;
 	var bottomrightlong = result.bottomrightlong;
 	var centerplace =  result.defaultcenterplace; 
-	*/
+	
 	//Define the bounds of the map
 	var bounds = new L.LatLngBounds(
 	new L.LatLng(topleftlat, topleftlong),
@@ -125,7 +125,7 @@ function MapwizeParse(response) {
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
-	<script src ="MapWize.jsdbx" type="text/javascript"></script>
+	<script src ="x_74411_mapwize_in.MapWize.jsdbx" type="text/javascript"></script>
 	<style>
         body {
             margin: 0;
@@ -179,7 +179,7 @@ function MapwizeParse(response) {
         <sys_created_on>2017-04-12 16:29:11</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5b078812db423200a3c056f0cf961952</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>MapWize</sys_name>
         <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
         <sys_policy/>
@@ -187,6 +187,6 @@ function MapwizeParse(response) {
         <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
         <sys_update_name>sys_ui_page_5b078812db423200a3c056f0cf961952</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-12 20:50:48</sys_updated_on>
+        <sys_updated_on>2017-04-13 16:12:42</sys_updated_on>
     </sys_ui_page>
 </record_update>

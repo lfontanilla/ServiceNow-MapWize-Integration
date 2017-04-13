@@ -11,7 +11,7 @@
         <sys_class_name>db_image</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-12 22:15:07</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>87e61556dbc23200a3c056f0cf9619f5</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>indooricon.png</sys_name>

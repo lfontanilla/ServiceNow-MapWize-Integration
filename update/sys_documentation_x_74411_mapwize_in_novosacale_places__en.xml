@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-04-12 21:38:09</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>24aecd12dbc23200a3c056f0cf96197f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>novosacale_places</sys_name>
