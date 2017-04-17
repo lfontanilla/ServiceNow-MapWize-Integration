@@ -10,7 +10,7 @@
         <sys_class_name>sys_ui_macro</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-12 22:17:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>aa57d156dbc23200a3c056f0cf961989</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>MapWizeRouteApp</sys_name>
