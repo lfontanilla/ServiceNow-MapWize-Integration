@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[    
+
+ var iIndicadorTo = true;
+
+var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;
+	var centerplace =  result.defaultcenterplace;
+	
+	//Define the bounds of the map
+    var bounds = new L.LatLngBounds(
+            new L.LatLng(topleftlat, topleftlong),
+            new L.LatLng(bottomrightlat, bottomrightlong)
+    );
+    //Create the map
+    //use maxBounds to limit the visible area
+    var map = Mapwize.map('map', {
+        apiKey: apikey,      
+        accessKey: accesskey                               
+    }, function (){
+		 //Fits the bounds of the map so the entire region is visible.
+		map.fitBounds(bounds);
+		map.centerOnPlace(centerplace);
+	});
+
+   
+
+	map.on('placeClick', function(e){        
+
+		map.removeMarkers();
+		if(!iIndicadorTo)
+		{
+
+		 if(document.getElementById('hdFrom').value != '') map.addMarker({placeId:document.getElementById('hdFrom').value});	
+		 
+		 document.getElementById('sys_display.txtTO').value = e.place.name;
+		 document.getElementById('hdTO').value = e.place._id;		 		 
+		 iIndicadorTo = true;	
+		} 
+		else
+		{
+
+		 if(document.getElementById('hdTO').value != '') map.addMarker({placeId:document.getElementById('hdTO').value});		
+		 
+		 document.getElementById('sys_display.txtFrom').value = e.place.name;
+		 document.getElementById('hdFrom').value = e.place._id;			 			
+		 iIndicadorTo = false;					
+		}
+
+		map.addMarker({placeId:e.place._id});	
+    });
+
+
+
+	removeMarkers = function () {
+        map.removeMarkers();
+		map.stopDirections();
+		 document.getElementById('sys_display.txtFrom').value = '';
+		 document.getElementById('hdFrom').value = '';	
+		 
+		 document.getElementById('sys_display.txtTO').value = '';
+		 document.getElementById('hdTO').value = '';	
+    };
+
+    createDirection = function() {
+		if((document.getElementById('hdFrom').value != '') && (document.getElementById('hdTO').value != ''))
+			map.showDirections({placeId:document.getElementById('hdFrom').value},{placeId:document.getElementById('hdTO').value}, null, function (){});
+	};
+
+    setpoint = function(obj)
+	{
+		var obj_id =obj.id;
+		var hd_id = obj_id.replace("txt","hd");
+		var id_place="";
+
+		var gr = new GlideRecord('x_74411_mapwize_in_indoor_location');
+		gr.addQuery('sys_id',obj.value);
+		gr.query();
+		if(gr.next())
+			id_place = gr.id_place;
+		
+		document.getElementById(hd_id).value =id_place;
+		map.removeMarkers();
+		map.stopDirections();
+		map.addMarker({placeId:id_place});	
+	};
+
+	
+}	]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_74411_mapwize_in_indoor_home_mobile.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null" >	
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>	
+	<script src ="MapWizeAll.jsdbx" type="text/javascript"></script>
+	
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:realtive; top:10px; bottom:50px; width:auto;
+            height: 400px;
+        }
+		
+		#form {
+		    position:realtive; top:10px; bottom:50px; width:auto;
+            height: auto;
+        }
+    </style>
+
+	
+		
+	<div id="form">
+		<table style="width:auto">			
+			<tr style="width:auto">				
+				<td >
+					<!--<input placeholder="From: " name="txtFrom"  id="txtFrom" />	-->
+					<g:ui_reference name="txtFrom" query="active=true" id="txtFrom" table="x_74411_mapwize_in_indoor_location" completer="AJAXTableCompleter" onchange="setpoint(this)"/>
+					<input type="hidden" id="hdFrom"></input>
+				</td>
+				<td>
+					<!--<input placeholder="To: " name="txtTO" id="txtTO"/>-->
+					<g:ui_reference name="txtTO" query="active=true" id="txtTO" table="x_74411_mapwize_in_indoor_location" completer="AJAXTableCompleter"/>
+					<input type="hidden" id="hdTO"></input>
+				</td>
+				<td>
+					<input type="image" id="imgRoute" name="imgRoute" src="btn_route.png" alt="Rute" style="width:30px; height:30px" onclick="createDirection()"/>
+					<input type="image" id="imgReset" name="imgReset" src="btn_clear.png" alt="Reset" style="width:20px; height:20px" onclick="removeMarkers()"/>
+				</td>
+			</tr>						
+		</table>
+	</div>
+	
+	
+	<div id="map"></div>
+</j:jelly>]]></html>
+        <name>indoor_home_mobile</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-17 20:42:55</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>7741fabbdb823200a3c056f0cf96191f</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>indoor_home_mobile</sys_name>
+        <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+        <sys_update_name>sys_ui_page_7741fabbdb823200a3c056f0cf96191f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-17 20:50:17</sys_updated_on>
+    </sys_ui_page>
+</record_update>
