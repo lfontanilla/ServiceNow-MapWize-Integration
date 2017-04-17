@@ -124,8 +124,8 @@ function MapwizeParse(response) {
         <endpoint>x_74411_mapwize_in_MapWize.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
-	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
-	<script src ="x_74411_mapwize_in.MapWize.jsdbx" type="text/javascript"></script>
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>	
+	<g:include_script src="mapwizeAll.jsdbx" />
 	<style>
         body {
             margin: 0;
@@ -179,7 +179,7 @@ function MapwizeParse(response) {
         <sys_created_on>2017-04-12 16:29:11</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5b078812db423200a3c056f0cf961952</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>MapWize</sys_name>
         <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
         <sys_policy/>
@@ -187,6 +187,6 @@ function MapwizeParse(response) {
         <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
         <sys_update_name>sys_ui_page_5b078812db423200a3c056f0cf961952</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-13 15:28:41</sys_updated_on>
+        <sys_updated_on>2017-04-17 15:02:51</sys_updated_on>
     </sys_ui_page>
 </record_update>
