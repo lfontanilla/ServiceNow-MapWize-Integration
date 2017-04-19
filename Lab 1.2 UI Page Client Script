@@ -1,0 +1,108 @@
+var iIndicadorTo = true;
+
+var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+	
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;
+	var centerplace =  result.defaultcenterplace; 
+	
+	//Define the bounds of the map
+	var bounds = new L.LatLngBounds(
+	new L.LatLng(topleftlat, topleftlong),
+	new L.LatLng(bottomrightlat, bottomrightlong)
+	);
+	//Create the map
+	//use maxBounds to limit the visible area
+	var map = Mapwize.map('map', {
+		apiKey: apikey,      // PASTE YOU API KEY HERE !!! This is a demo key. It is not allowed to use it for production. The key might change at any time without notice.
+		accessKey: accesskey                                // Key to gain access to the demo building
+	}, function (){
+		//Fits the bounds of the map so the entire region is visible.
+		map.fitBounds(bounds);
+		// Center Place
+		map.centerOnPlace(centerplace);
+	});
+	
+	
+	
+	map.on('placeClick', function(e){
+		// SDSE - VSI Team
+		// Se Limpian los marcadores
+		map.removeMarkers();
+		if(!iIndicadorTo)
+			{
+			// SDSE - VSI Team
+			// Se valida si existe un marcador destino	y se vuelve a agregar el marcador.
+			if(document.getElementById('hdFrom').value != '') map.addMarker({placeId:document.getElementById('hdFrom').value});
+				
+				document.getElementById('txtTO').value = e.place.name;
+				document.getElementById('hdTO').value = e.place._id;
+				iIndicadorTo = true;
+			}
+			else
+				{
+				// SDSE - VSI Team
+				// Se valida si existe un marcador origen	y se vuelve a agregar el marcador.
+				if(document.getElementById('hdTO').value != '') map.addMarker({placeId:document.getElementById('hdTO').value});
+					
+					document.getElementById('txtFrom').value = e.place.name;
+					document.getElementById('hdFrom').value = e.place._id;
+					iIndicadorTo = false;
+				}
+				// SDSE - VSI Team
+				// Se asigna el Marcador en el mapa
+				map.addMarker({placeId:e.place._id});
+				});
+				
+				
+				
+				removeMarkers = function () {
+					map.removeMarkers();
+					map.stopDirections();
+					document.getElementById('txtFrom').value = '';
+					document.getElementById('hdFrom').value = '';
+					
+					document.getElementById('txtTO').value = '';
+					document.getElementById('hdTO').value = '';
+				};
+				
+				createDirection = function() {
+					if((document.getElementById('hdFrom').value != '') && (document.getElementById('hdTO').value != ''))
+						map.showDirections({placeId:document.getElementById('hdFrom').value},{placeId:document.getElementById('hdTO').value}, null, function (){});
+					};
+					
+					saveValues= function()
+					{
+						var PlaceNameFrom = gel("txtFrom").value;
+						var PlaceNameTo = gel("txtTO").value;
+						
+						var PlaceIdFrom = document.getElementById('hdFrom').value;
+						var PlaceIdTo =  document.getElementById('hdTO').value;
+						
+						if ((PlaceNameFrom == "")||(PlaceNameTo == "")) {
+							//If comments are empty stop submission
+							alert("Please provide From/To Direction to submit the dialog.");
+						}else{
+							g_form.setValue("u_nameplacefrom", PlaceNameFrom);
+							g_form.setValue("u_nameplaceto", PlaceNameTo);
+							
+							g_form.setValue("u_idplacefrom", PlaceIdFrom);
+							g_form.setValue("u_idplaceto", PlaceIdTo);
+							GlideDialogWindow.get().destroy();
+						}
+					};
+					
+					
+					
+				}
