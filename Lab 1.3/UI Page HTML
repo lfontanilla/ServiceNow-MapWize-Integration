@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null" >	
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>	
+	<script src ="MapWizeAll.jsdbx" type="text/javascript"></script>
+	
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:realtive; top:10px; bottom:50px; width:auto;
+            height: 400px;
+        }
+		
+		#form {
+		    position:realtive; top:10px; bottom:50px; width:auto;
+            height: auto;
+        }
+    </style>
+
+	
+		
+	<div id="form">
+		<table style="width:auto">			
+			<tr style="width:auto">				
+				<td >
+					<!--<input placeholder="From: " name="txtFrom"  id="txtFrom" />	-->
+					<g:ui_reference name="txtFrom" query="active=true" id="txtFrom" table="x_74411_mapwize_in_indoor_location" completer="AJAXTableCompleter" onchange="setpoint(this)"/>
+					<input type="hidden" id="hdFrom"></input>
+				</td>
+				<td>
+					<!--<input placeholder="To: " name="txtTO" id="txtTO"/>-->
+					<g:ui_reference name="txtTO" query="active=true" id="txtTO" table="x_74411_mapwize_in_indoor_location" completer="AJAXTableCompleter"/>
+					<input type="hidden" id="hdTO"></input>
+				</td>
+				<td>
+					<input type="image" id="imgRoute" name="imgRoute" src="btn_route.png" alt="Rute" style="width:30px; height:30px" onclick="createDirection()"/>
+					<input type="image" id="imgReset" name="imgReset" src="btn_clear.png" alt="Reset" style="width:20px; height:20px" onclick="removeMarkers()"/>
+				</td>
+			</tr>						
+		</table>
+	</div>
+	
+	
+	<div id="map"></div>
+</j:jelly>
