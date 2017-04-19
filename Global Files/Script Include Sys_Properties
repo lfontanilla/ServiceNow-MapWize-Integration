@@ -1,0 +1,18 @@
+var MapWizeAjaxHelper = Class.create();
+MapWizeAjaxHelper.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	getMapwizeIntegrationParams:function(){		
+		var result = {};
+		result.apikey = gs.getProperty('x_74411_mapwize_in.routing.mapwize.apikey', 'd8718666af305f55890aea3cd17a3823');
+		result.accesskey = gs.getProperty('x_74411_mapwize_in.routing.mapwize.accesskey', 'hQv4I7nwIEHHFvJy');
+		result.topleftlat = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.topleft.lat', '11.002682');
+		result.topleftlong = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.topleft.long', '-74.805625');
+		result.bottomrightlat = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.bottomright.lat', '11.002277');
+		result.bottomrightlong = gs.getProperty('x_74411_mapwize_in.routing.mapwize.bounds.bottomright.long', '-74.804306');
+		result.defaultcenterplace = gs.getProperty('x_74411_mapwize_in.routing.mapwize.defaultcenterplace', '58e7b607899e32001003e504');
+			
+		var res = new global.JSON().encode(result); // convert object to JSON string
+		return res;
+		
+	},
+    type: 'MapWizeAjaxHelper'
+});
