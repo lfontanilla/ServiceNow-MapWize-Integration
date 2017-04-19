@@ -1,0 +1,53 @@
+var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;    
+	var centerplace =  result.defaultcenterplace;
+	
+//Create the map
+    //use maxBounds to limit the visible area
+    var map = Mapwize.map('map', {
+        apiKey: apikey,      
+        accessKey: accesskey                                
+	}, function () {
+					var place = g_form.getReference("x_74411_mapwize_in_indoor_application_app");					
+					if(place.id_place != undefined)
+					{
+						map.addMarker({placeId:place.id_place});
+						map.centerOnPlace(place.id_place);
+						
+					}
+					else
+					{
+						//Define the bounds of the map
+						var bounds = new L.LatLngBounds(
+							new L.LatLng(topleftlat, topleftlong),
+							new L.LatLng(bottomrightlat, bottomrightlong)
+						);
+						map.fitBounds(bounds);
+						map.centerOnPlace(centerplace);
+					} 
+    });
+
+
+	map.on('placeClick', function(e){        		
+		var gr = new GlideRecord('x_74411_mapwize_in_indoor_location');
+		gr.addQuery('id_place', e.place._id);
+		gr.query();
+		gr.next();
+				
+		g_form.setValue("x_74411_mapwize_in_indoor_application_app", gr.sys_id);
+		GlideDialogWindow.get().destroy();
+    });
+	
+} // End function MapwizeParse
