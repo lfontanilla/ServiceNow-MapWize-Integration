@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;    
+	var centerplace =  result.defaultcenterplace;
+	
+//Create the map
+    //use maxBounds to limit the visible area
+    var map = Mapwize.map('map', {
+        apiKey: apikey,      
+        accessKey: accesskey                                
+	}, function () {
+					var place = g_form.getReference("x_74411_mapwize_in_indoor_application_app");					
+					if(place.id_place != undefined)
+					{
+						map.addMarker({placeId:place.id_place});
+						map.centerOnPlace(place.id_place);
+						
+					}
+					else
+					{
+						//Define the bounds of the map
+						var bounds = new L.LatLngBounds(
+							new L.LatLng(topleftlat, topleftlong),
+							new L.LatLng(bottomrightlat, bottomrightlong)
+						);
+						map.fitBounds(bounds);
+						map.centerOnPlace(centerplace);
+					} 
+    });
+
+
+	map.on('placeClick', function(e){        		
+		var gr = new GlideRecord('x_74411_mapwize_in_indoor_location');
+		gr.addQuery('id_place', e.place._id);
+		gr.query();
+		gr.next();
+				
+		g_form.setValue("x_74411_mapwize_in_indoor_application_app", gr.sys_id);
+		GlideDialogWindow.get().destroy();
+    });
+	
+} // End function MapwizeParse]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_74411_mapwize_in_MapWizeCI_app.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
+	<script src ="mapwizeAll.jsdbx" type="text/javascript"></script>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:relative; top:10px; bottom:50px; width:800px;
+            height: 500px;
+        }
+		
+
+    </style>
+	
+	<div id="map"></div>
+		
+</j:jelly>]]></html>
+        <name>MapWizeCI_app</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-04-18 15:08:39</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>1ecd6a08db123200a3c056f0cf961982</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>MapWizeCI_app</sys_name>
+        <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
+        <sys_update_name>sys_ui_page_1ecd6a08db123200a3c056f0cf961982</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-04-18 22:09:34</sys_updated_on>
+    </sys_ui_page>
+</record_update>
