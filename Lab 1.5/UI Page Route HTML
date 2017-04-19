@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
+	<script src ="mapwizeAll.jsdbx" type="text/javascript"></script>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:relative; top:10px; bottom:50px; width:600px;
+            height: 400px;
+        }
+		
+
+    </style>
+	
+	<div id="map"></div>
+	
+	
+</j:jelly>
