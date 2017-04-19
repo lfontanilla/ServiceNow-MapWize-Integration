@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+<a id="linkMapWizeRuteCI_app"  title="${gs.getMessage('Show Route APP')}" onclick="showPopUpRouteCI_app()">
+		<img border="0" src="indooricon.png" height="30" width="30"/>   
+	</a>
+
+	<script type="text/javascript" language="JavaScript">
+		function showPopUpRouteCI_app() {		   
+		   var dialog = new GlideDialogWindow("x_74411_mapwize_in_MapWizeRouteCI"); 
+		   dialog.setTitle("Show Route"); 
+		   dialog.setSize(800,500);
+		   dialog.render(); 
+		}		
+	</script>
+</j:jelly>
