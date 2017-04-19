@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+	<a id="linkMapWizeApp" title="${gs.getMessage('Select an indoor location for this CI')}" onclick="showPopUpCIApp()">
+		<img border="0" src="LogoIndoorMap.png" height="30" width="30"/>   
+	</a>
+
+	<script type="text/javascript" language="JavaScript">
+		function showPopUpCIApp() {
+		   
+		   //Initialize and open the Dialog Window
+		   var dialog = new GlideDialogWindow("x_74411_mapwize_in_MapWizeCI_app"); 
+		   dialog.setTitle("Select Place"); 
+		   dialog.setSize(800,500);
+		   dialog.render(); 
+		}
+
+	</script>
+	
+</j:jelly>
