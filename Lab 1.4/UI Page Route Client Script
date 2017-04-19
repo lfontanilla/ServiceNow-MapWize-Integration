@@ -1,0 +1,87 @@
+var ga = new GlideAjax('MapWizeAjaxHelper');
+ga.addParam('sysparm_name','getMapwizeIntegrationParams');
+ga.getXML(MapwizeParse);
+
+function MapwizeParse(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var result = JSON.parse(answer);
+	
+	
+	var apikey = result.apikey;
+	var accesskey = result.accesskey;
+	var topleftlat = result.topleftlat;
+	var topleftlong = result.topleftlong;
+	var bottomrightlat = result.bottomrightlat;
+	var bottomrightlong = result.bottomrightlong;  
+	
+	//Create the map
+    //use maxBounds to limit the visible area
+    var map = Mapwize.map('map', {
+        apiKey: apikey,      
+        accessKey: accesskey                               
+	}, function () {
+					var place = g_form.getReference("x_74411_mapwize_in_indoor_location");					
+					if(place.id_place != undefined)
+					{
+						//map.addMarker({placeId:place.u_id_place});
+						map.centerOnPlace(place.id_place);
+						
+						var idUser = g_user.userID;
+						
+						var grFrom = new GlideRecord('sys_user');
+						grFrom.addQuery('sys_id', idUser);
+						grFrom.query();
+						var sys_idLocation ='';
+						if (grFrom.next())
+							 sys_idLocation = grFrom.x_74411_mapwize_in_indoor_location;
+
+						var grIndoorAssigned = new GlideRecord('x_74411_mapwize_in_indoor_location');
+						grIndoorAssigned.addQuery('sys_id', sys_idLocation);
+						grIndoorAssigned.query();
+						grIndoorAssigned.next();
+						
+						// SDSE - 12/30/2016
+						// Se genera la ruta
+						if(grIndoorAssigned.id_place != undefined)
+						{
+							map.showDirections({placeId:place.id_place},{placeId:grIndoorAssigned.id_place}, null, function (){});	
+						}
+						else
+						{
+							alert('Both users must have indoor locations assinged for route drawing to work.');
+							GlideDialogWindow.get().destroy();
+						}
+							
+						
+					}
+					else
+					{
+						//Define the bounds of the map
+						var bounds = new L.LatLngBounds(
+							new L.LatLng(topleftlat, topleftlong),
+							new L.LatLng(bottomrightlat, bottomrightlong)
+						);
+						map.fitBounds(bounds);
+						
+						alert('Both users must have indoor locations assinged for route drawing to work.');
+							GlideDialogWindow.get().destroy();
+					} 
+    });
+
+
+	map.on('placeClick', function(e){        
+		// SDSE - VSI Team
+		// Se asigna el Marcador en el mapa
+		
+		// SDSE - VSI Team
+		// Se realiza un query para obtener el SysId del Nombre seleccionado
+		var gr = new GlideRecord('x_74411_mapwize_in_indoor_location');
+		gr.addQuery('id_place', e.place._id);
+		gr.query();
+		gr.next();
+				
+		g_form.setValue("x_74411_mapwize_in_indoor_location", gr.sys_id);
+		GlideDialogWindow.get().destroy();
+    });
+	
+} // End function MapwizeParse
