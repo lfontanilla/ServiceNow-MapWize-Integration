@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<link href="526af7fcdb0722006721dc50cf9619d7.cssdbx" rel="stylesheet" type="text/css"></link>
+	<script src ="mapwizeAll.jsdbx" type="text/javascript"></script>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position:absolute; top:10px; bottom:50px; width:550px;
+            height: 250px;
+        }
+		
+		#form {
+            position:absolute; top:270px; bottom:500px; width:100px;
+            height: 150px;
+        }
+    </style>
+	
+	<div id="map"></div>
+	<g:ui_form>
+	<div id="form">
+		<table>
+			<tr>
+				<td colspan="3">DIRECTION</td>
+			</tr>
+			<tr>				
+				<td>
+					<g:ui_input_field label="From: " name="txtFrom"  id="txtFrom" size="50"/>					
+					<input type="hidden" id="hdFrom"></input>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<g:ui_input_field label="To: " name="txtTO" id="txtTO" size="50"/>					
+					<input type="hidden" id="hdTO"></input>
+				</td>				
+			</tr>
+			<tr>
+				<td colspan="3" align="center">
+					<g:dialog_button onclick="createDirection()" type="button">Route</g:dialog_button>					
+					<g:dialog_button onclick="removeMarkers()" type="button">Clear</g:dialog_button>
+					<g:dialog_button onclick="saveValues()"   type="button">Save</g:dialog_button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</g:ui_form>
+</j:jelly>
