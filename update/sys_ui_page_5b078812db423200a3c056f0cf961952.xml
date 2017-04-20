@@ -12,15 +12,6 @@ function MapwizeParse(response) {
 	var answer = response.responseXML.documentElement.getAttribute("answer");
 	var result = JSON.parse(answer);
 	
-	/*
-	var apikey = '32feb619c24538c32e542bc9c4251aaf';
-	var accesskey = '6qRlrrPZCdExksNw';
-	var topleftlat = '11.002682';
-	var topleftlong = '-74.805625';
-	var bottomrightlat = '11.002277';
-	var bottomrightlong = '-74.804306';
-	var centerplace =  '58e7b607899e32001003e504';
-	*/
 	
 	var apikey = result.apikey;
 	var accesskey = result.accesskey;
@@ -179,7 +170,7 @@ function MapwizeParse(response) {
         <sys_created_on>2017-04-12 16:29:11</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5b078812db423200a3c056f0cf961952</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>MapWize</sys_name>
         <sys_package display_value="MapWize Integration" source="x_74411_mapwize_in">1bb47b46db023200a3c056f0cf9619f8</sys_package>
         <sys_policy/>
@@ -187,6 +178,6 @@ function MapwizeParse(response) {
         <sys_scope display_value="MapWize Integration">1bb47b46db023200a3c056f0cf9619f8</sys_scope>
         <sys_update_name>sys_ui_page_5b078812db423200a3c056f0cf961952</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-17 15:10:32</sys_updated_on>
+        <sys_updated_on>2017-04-19 15:56:20</sys_updated_on>
     </sys_ui_page>
 </record_update>
